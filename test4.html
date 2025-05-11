@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>High School Proficiency Test 4</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <!-- ElegantFonts CSS -->
+    <link rel="stylesheet" href="css/elegant-fonts.css">
+
+    <!-- themify-icons CSS -->
+    <link rel="stylesheet" href="css/themify-icons.css">
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="css/swiper.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles1.css">
+</head>
+<body>
+    <!-- Confirmation Modal -->
+    <div id="confirmModal" class="modal">
+        <div class="modal-content">
+            <h3>Confirm submission</h3>
+            <p>You have answered <span id="answeredCount">0</span>/20 questions.<br> Are you sure you want to submit?</p>
+            <div class="modal-buttons">
+                <button id="confirmSubmitBtn" class="modal-btn confirm">Submit</button>
+                <button id="cancelSubmitBtn" class="modal-btn cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <!-- Result Modal -->
+    <div id="resultModal" class="modal">
+        <div class="modal-content">
+            <h3>Result</h3>
+            <p>Your score: <span id="finalScore">0</span>/10</p>
+            <div class="modal-buttons">
+                <button id="closeResultBtn" class="modal-btn confirm">Confirm</button>
+            </div>
+        </div>
+    </div>
+    <div class="page-header">
+        <header class="site-header">
+            <div class="top-header-bar">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12 col-lg-6 d-none d-md-flex flex-wrap justify-content-center justify-content-lg-start mb-3 mb-lg-0">
+                            <div class="header-bar-email d-flex align-items-center">
+                                <i class="fa fa-envelope"></i><a href="#"><span class="__cf_email__" data-cfemail="277e4f5b545459064c4d5b414f4667404a464e4b0944484a">[email protected]</span></a>
+                            </div><!-- .header-bar-email -->
+                            <div class="header-bar-text lg-flex align-items-center">
+                                <p><i class="fa fa-phone"></i>001-1234-88888 </p>
+                            </div><!-- .header-bar-text -->
+                        </div><!-- .col -->
+                        <div class="col-12 col-lg-6 d-flex flex-wrap justify-content-center justify-content-lg-end align-items-center">
+                            <div class="header-bar-search">
+                                <form class="flex align-items-stretch">
+                                    <input type="search" placeholder="What would you like to learn?">
+                                    <button type="submit" value="" class="flex justify-content-center align-items-center"><i class="fa fa-search"></i></button>
+                                </form>
+                            </div><!-- .header-bar-search -->
+                            <div class="header-bar-menu">
+                                <ul class="flex justify-content-center align-items-center py-2 pt-md-0">
+                                    <li><a href="#">Register</a></li>
+                                    <li><a href="#">Login</a></li>
+                                </ul>
+                            </div><!-- .header-bar-menu -->
+                        </div><!-- .col -->
+                    </div><!-- .row -->
+                </div><!-- .container-fluid -->
+            </div><!-- .top-header-bar -->
+            <div class="nav-bar">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-9 col-lg-3">
+                            <div class="site-branding">
+                                <h1 class="site-title"><a href="index.html" rel="home">Ezu<span>ca</span></a></h1>
+                            </div><!-- .site-branding -->
+                        </div><!-- .col -->
+                        <div class="col-3 col-lg-9 flex justify-content-end align-content-center">
+                            <nav class="site-navigation flex justify-content-end align-items-center">
+                                <ul class="flex flex-column flex-lg-row justify-content-lg-end align-content-center">
+                                    <li class="current-menu-item"><a href="index.html">Home</a></li>
+                                    <li><a href="about.html">About</a></li>
+                                    <li><a href="courses.html">Courses</a></li>
+                                    <li><a href="#">Test</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+                                <div class="hamburger-menu d-lg-none">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div><!-- .hamburger-menu -->
+                                <div class="header-bar-cart">
+                                    <a href="#" class="flex justify-content-center align-items-center"><span aria-hidden="true" class="icon_bag_alt"></span></a>
+                                </div><!-- .header-bar-search -->
+                            </nav><!-- .site-navigation -->
+                        </div><!-- .col -->
+                    </div><!-- .row -->
+                </div><!-- .container -->
+            </div><!-- .nav-bar -->
+        </header><!-- .site-header -->
+        <div class="page-header-overlay">
+            <div class=".property">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <header class="entry-header">
+                                <h1>Phonetic Test</h1>
+                            </header><!-- .entry-header -->
+                        </div><!-- .col -->
+                    </div><!-- .row -->
+                </div><!-- .container -->
+            </div><!-- .property -->
+        </div><!-- .page-header-overlay -->
+    </div><!-- .page-header -->
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-8">
+                <p><strong>Time: 60 minutes</strong></p>
+                <p><strong>Questions: 20</strong></p>
+                <form id="quizForm" class="quiz-form">
+                    <!-- Question 1 -->
+                    <div class="question">
+                        <p><strong>Question 1:</strong> Mark the letter A, B, C, or D to indicate the word whose underlined part differs from the other three in pronunciation.</p>
+                        <p>A. expand   B. stagnant   C. vacancy   D. applicant</p>
+                        <label><input type="radio" name="q1" value="A"> A</label>
+                        <label><input type="radio" name="q1" value="B"> B</label>
+                        <label><input type="radio" name="q1" value="C"> C</label>
+                        <label><input type="radio" name="q1" value="D"> D</label>
+                    </div>
+                    <!-- Question 2 -->
+                    <div class="question">
+                        <p><strong>Question 2:</strong> Mark the letter A, B, C, or D to indicate the word whose underlined part differs from the other three in pronunciation.</p>
+                        <p>A. attain<u>ed</u>   B. resolv<u>ed</u>   C. disus<u>ed</u>   D. decreas<u>ed</u></p>
+                        <label><input type="radio" name="q2" value="A"> A</label>
+                        <label><input type="radio" name="q2" value="B"> B</label>
+                        <label><input type="radio" name="q2" value="C"> C</label>
+                        <label><input type="radio" name="q2" value="D"> D</label>
+                    </div>
+                    <!-- Question 3 -->
+                    <div class="question">
+                        <p><strong>Question 3:</strong> Mark the letter A, B, C, or D to indicate the word whose underlined part differs from the other three in pronunciation.</p>
+                        <p>A. campus   B. fabulous   C. financial   D. extracurricular</p>
+                        <label><input type="radio" name="q3" value="A"> A</label>
+                        <label><input type="radio" name="q3" value="B"> B</label>
+                        <label><input type="radio" name="q3" value="C"> C</label>
+                        <label><input type="radio" name="q3" value="D"> D</label>
+                    </div>
+                    <!-- Question 4 -->
+                    <div class="question">
+                        <p><strong>Question 4:</strong> Mark the letter A, B, C, or D to indicate the word whose underlined part differs from the other three in pronunciation.</p>
+                        <p>A. wick<u>ed</u>   B. crook<u>ed</u>   C. learn<u>ed</u>   D. work<u>ed</u></p>
+                        <label><input type="radio" name="q4" value="A"> A</label>
+                        <label><input type="radio" name="q4" value="B"> B</label>
+                        <label><input type="radio" name="q4" value="C"> C</label>
+                        <label><input type="radio" name="q4" value="D"> D</label>
+                    </div>
+                    <!-- Question 5 -->
+                    <div class="question">
+                        <p><strong>Question 5:</strong> Mark the letter A, B, C, or D to indicate the word whose underlined part differs from the other three in pronunciation.</p>
+                        <p>A. heal   B. tear   C. fear   D. ear</p>
+                        <label><input type="radio" name="q5" value="A"> A</label>
+                        <label><input type="radio" name="q5" value="B"> B</label>
+                        <label><input type="radio" name="q5" value="C"> C</label>
+                        <label><input type="radio" name="q5" value="D"> D</label>
+                    </div>
+                    <!-- Question 6 -->
+                    <div class="question">
+                        <p><strong>Question 6:</strong> Mark the letter A, B, C, or D to indicate the word whose underlined part differs from the other three in pronunciation.</p>
+                        <p>A. cr<u>ui</u>se   B. b<u>ui</u>ld   C. br<u>ui</u>se   D. fr<u>ui</u>t</p>
+                        <label><input type="radio" name="q6" value="A"> A</label>
+                        <label><input type="radio" name="q6" value="B"> B</label>
+                        <label><input type="radio" name="q6" value="C"> C</label>
+                        <label><input type="radio" name="q6" value="D"> D</label>
+                    </div>
+                    <!-- Question 7 -->
+                    <div class="question">
+                        <p><strong>Question 7:</strong> Mark the letter A, B, C, or D to indicate the word whose underlined part differs from the other three in pronunciation.</p>
+                        <p>A. tooth   B. booth   C. good   D. soon</p>
+                        <label><input type="radio" name="q7" value="A"> A</label>
+                        <label><input type="radio" name="q7" value="B"> B</label>
+                        <label><input type="radio" name="q7" value="C"> C</label>
+                        <label><input type="radio" name="q7" value="D"> D</label>
+                    </div>
+                    <!-- Question 8 -->
+                    <div class="question">
+                        <p><strong>Question 8:</strong> Mark the letter A, B, C, or D to indicate the word whose underlined part differs from the other three in pronunciation.</p>
+                        <p>A. improve<u>s</u>   B. destroy<u>s</u>   C. suggest<u>s</u>   D. remind<u>s</u></p>
+                        <label><input type="radio" name="q8" value="A"> A</label>
+                        <label><input type="radio" name="q8" value="B"> B</label>
+                        <label><input type="radio" name="q8" value="C"> C</label>
+                        <label><input type="radio" name="q8" value="D"> D</label>
+                    </div>
+                    <!-- Question 9 -->
+                    <div class="question">
+                        <p><strong>Question 9:</strong> Mark the letter A, B, C, or D to indicate the word whose underlined part differs from the other three in pronunciation.</p>
+                        <p>A. paw   B. raw   C. car   D. war</p>
+                        <label><input type="radio" name="q9" value="A"> A</label>
+                        <label><input type="radio" name="q9" value="B"> B</label>
+                        <label><input type="radio" name="q9" value="C"> C</label>
+                        <label><input type="radio" name="q9" value="D"> D</label>
+                    </div>
+                    <!-- Question 10 -->
+                    <div class="question">
+                        <p><strong>Question 10:</strong> Mark the letter A, B, C, or D to indicate the word whose underlined part differs from the other three in pronunciation.</p>
+                        <p>A. b<u>ee</u>r   B. sh<u>ee</u>p   C. f<u>ee</u>t   D. f<u>ee</u></p>
+                        <label><input type="radio" name="q10" value="A"> A</label>
+                        <label><input type="radio" name="q10" value="B"> B</label>
+                        <label><input type="radio" name="q10" value="C"> C</label>
+                        <label><input type="radio" name="q10" value="D"> D</label>
+                    </div>
+                    <!-- Question 11 -->
+                    <div class="question">
+                        <p><strong>Question 11:</strong> Mark the letter A, B, C, or D to indicate the word that differs from the other three in the position of primary stress.</p>
+                        <p>A. flourish   B. season   C. product   D. today</p>
+                        <label><input type="radio" name="q11" value="A"> A</label>
+                        <label><input type="radio" name="q11" value="B"> B</label>
+                        <label><input type="radio" name="q11" value="C"> C</label>
+                        <label><input type="radio" name="q11" value="D"> D</label>
+                    </div>
+                    <!-- Question 12 -->
+                    <div class="question">
+                        <p><strong>Question 12:</strong> Mark the letter A, B, C, or D to indicate the word that differs from the other three in the position of primary stress.</p>
+                        <p>A. attitude   B. infamously   C. geneticist   D. socialist</p>
+                        <label><input type="radio" name="q12" value="A"> A</label>
+                        <label><input type="radio" name="q12" value="B"> B</label>
+                        <label><input type="radio" name="q12" value="C"> C</label>
+                        <label><input type="radio" name="q12" value="D"> D</label>
+                    </div>
+                    <!-- Question 13 -->
+                    <div class="question">
+                        <p><strong>Question 13:</strong> Mark the letter A, B, C, or D to indicate the word that differs from the other three in the position of primary stress.</p>
+                        <p>A. develop   B. adjective   C. generous   D. popular</p>
+                        <label><input type="radio" name="q13" value="A"> A</label>
+                        <label><input type="radio" name="q13" value="B"> B</label>
+                        <label><input type="radio" name="q13" value="C"> C</label>
+                        <label><input type="radio" name="q13" value="D"> D</label>
+                    </div>
+                    <!-- Question 14 -->
+                    <div class="question">
+                        <p><strong>Question 14:</strong> Mark the letter A, B, C, or D to indicate the word that differs from the other three in the position of primary stress.</p>
+                        <p>A. natural   B. department   C. exception   D. attentive</p>
+                        <label><input type="radio" name="q14" value="A"> A</label>
+                        <label><input type="radio" name="q14" value="B"> B</label>
+                        <label><input type="radio" name="q14" value="C"> C</label>
+                        <label><input type="radio" name="q14" value="D"> D</label>
+                    </div>
+                    <!-- Question 15 -->
+                    <div class="question">
+                        <p><strong>Question 15:</strong> Mark the letter A, B, C, or D to indicate the word that differs from the other three in the position of primary stress.</p>
+                        <p>A. romantic   B. illusion   C. description   D. incident</p>
+                        <label><input type="radio" name="q15" value="A"> A</label>
+                        <label><input type="radio" name="q15" value="B"> B</label>
+                        <label><input type="radio" name="q15" value="C"> C</label>
+                        <label><input type="radio" name="q15" value="D"> D</label>
+                    </div>
+                    <!-- Question 16 -->
+                    <div class="question">
+                        <p><strong>Question 16:</strong> Mark the letter A, B, C, or D to indicate the word that differs from the other three in the position of primary stress.</p>
+                        <p>A. accident   B. courageous   C. dangerous   D. character</p>
+                        <label><input type="radio" name="q16" value="A"> A</label>
+                        <label><input type="radio" name="q16" value="B"> B</label>
+                        <label><input type="radio" name="q16" value="C"> C</label>
+                        <label><input type="radio" name="q16" value="D"> D</label>
+                    </div>
+                    <!-- Question 17 -->
+                    <div class="question">
+                        <p><strong>Question 17:</strong> Mark the letter A, B, C, or D to indicate the word that differs from the other three in the position of primary stress.</p>
+                        <p>A. remember   B. influence   C. expression   D. convenient</p>
+                        <label><input type="radio" name="q17" value="A"> A</label>
+                        <label><input type="radio" name="q17" value="B"> B</label>
+                        <label><input type="radio" name="q17" value="C"> C</label>
+                        <label><input type="radio" name="q17" value="D"> D</label>
+                    </div>
+                    <!-- Question 18 -->
+                    <div class="question">
+                        <p><strong>Question 18:</strong> Mark the letter A, B, C, or D to indicate the word that differs from the other three in the position of primary stress.</p>
+                        <p>A. impress   B. favor   C. occur   D. police</p>
+                        <label><input type="radio" name="q18" value="A"> A</label>
+                        <label><input type="radio" name="q18" value="B"> B</label>
+                        <label><input type="radio" name="q18" value="C"> C</label>
+                        <label><input type="radio" name="q18" value="D"> D</label>
+                    </div>
+                    <!-- Question 19 -->
+                    <div class="question">
+                        <p><strong>Question 19:</strong> Mark the letter A, B, C, or D to indicate the word that differs from the other three in the position of primary stress.</p>
+                        <p>A. academic   B. education   C. impossible   D. optimistic</p>
+                        <label><input type="radio" name="q19" value="A"> A</label>
+                        <label><input type="radio" name="q19" value="B"> B</label>
+                        <label><input type="radio" name="q19" value="C"> C</label>
+                        <label><input type="radio" name="q19" value="D"> D</label>
+                    </div>
+                    <!-- Question 20 -->
+                    <div class="question">
+                        <p><strong>Question 20:</strong> Mark the letter A, B, C, or D to indicate the word that differs from the other three in the position of primary stress.</p>
+                        <p>A. industry   B. performance   C. importance   D. provision</p>
+                        <label><input type="radio" name="q20" value="A"> A</label>
+                        <label><input type="radio" name="q20" value="B"> B</label>
+                        <label><input type="radio" name="q20" value="C"> C</label>
+                        <label><input type="radio" name="q20" value="D"> D</label>
+                    </div>
+                </form>
+            </div><!-- .col-12 col-lg-8 -->
+            <div class="col-12 col-lg-4">
+                <div class="quiz-sidebar">
+                    <div class="timer">
+                        <h3>Time remaining: <span id="timer">20:00</span></h3>
+                    </div>
+                    <div class="question-status">
+                        <h3>Question status</h3>
+                        <div class="question-grid">
+                            <!-- JavaScript will populate this -->
+                        </div>
+                    </div>
+                    <button id="sidebarSubmitBtn" class="submit-btn">Submit</button>
+                </div>
+            </div><!-- .col-12 col-lg-4 -->
+        </div><!-- .row -->
+    </div><!-- .container -->
+    <script>
+        const correctAnswers = {
+            q1: 'C', q2: 'B', q3: 'C', q4: 'C', q5: 'A', q6: 'B', q7: 'C', q8: 'C', q9: 'C', q10: 'D',
+            q11: 'D', q12: 'B', q13: 'B', q14: 'C', q15: 'A', q16: 'D', q17: 'C', q18: 'C', q19: 'C', q20: 'B'
+        };
+    </script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="script1.js"></script>
+    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93e1effd5d40ad5e',t:'MTc0Njk2OTI0Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</body>
+</html>

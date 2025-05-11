@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>High School Proficiency Test 6</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <!-- ElegantFonts CSS -->
+    <link rel="stylesheet" href="css/elegant-fonts.css">
+
+    <!-- themify-icons CSS -->
+    <link rel="stylesheet" href="css/themify-icons.css">
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="css/swiper.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles1.css">
+</head>
+<body>
+    <!-- Confirmation Modal -->
+    <div id="confirmModal" class="modal">
+        <div class="modal-content">
+            <h3>Confirm submission</h3>
+            <p>You have answered <span id="answeredCount">0</span>/20 questions.<br> Are you sure you want to submit?</p>
+            <div class="modal-buttons">
+                <button id="confirmSubmitBtn" class="modal-btn confirm">Submit</button>
+                <button id="cancelSubmitBtn" class="modal-btn cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <!-- Result Modal -->
+    <div id="resultModal" class="modal">
+        <div class="modal-content">
+            <h3>Result</h3>
+            <p>Your score: <span id="finalScore">0</span>/10</p>
+            <div class="modal-buttons">
+                <button id="closeResultBtn" class="modal-btn confirm">Confirm</button>
+            </div>
+        </div>
+    </div>
+    <div class="page-header">
+        <header class="site-header">
+            <div class="top-header-bar">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12 col-lg-6 d-none d-md-flex flex-wrap justify-content-center justify-content-lg-start mb-3 mb-lg-0">
+                            <div class="header-bar-email d-flex align-items-center">
+                                <i class="fa fa-envelope"></i><a href="#"><span class="__cf_email__" data-cfemail="277e4f5b545459064c4d5b414f4667404a464e4b0944484a">[email protected]</span></a>
+                            </div><!-- .header-bar-email -->
+                            <div class="header-bar-text lg-flex align-items-center">
+                                <p><i class="fa fa-phone"></i>001-1234-88888 </p>
+                            </div><!-- .header-bar-text -->
+                        </div><!-- .col -->
+                        <div class="col-12 col-lg-6 d-flex flex-wrap justify-content-center justify-content-lg-end align-items-center">
+                            <div class="header-bar-search">
+                                <form class="flex align-items-stretch">
+                                    <input type="search" placeholder="What would you like to learn?">
+                                    <button type="submit" value="" class="flex justify-content-center align-items-center"><i class="fa fa-search"></i></button>
+                                </form>
+                            </div><!-- .header-bar-search -->
+                            <div class="header-bar-menu">
+                                <ul class="flex justify-content-center align-items-center py-2 pt-md-0">
+                                    <li><a href="#">Register</a></li>
+                                    <li><a href="#">Login</a></li>
+                                </ul>
+                            </div><!-- .header-bar-menu -->
+                        </div><!-- .col -->
+                    </div><!-- .row -->
+                </div><!-- .container-fluid -->
+            </div><!-- .top-header-bar -->
+            <div class="nav-bar">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-9 col-lg-3">
+                            <div class="site-branding">
+                                <h1 class="site-title"><a href="index.html" rel="home">Ezu<span>ca</span></a></h1>
+                            </div><!-- .site-branding -->
+                        </div><!-- .col -->
+                        <div class="col-3 col-lg-9 flex justify-content-end align-content-center">
+                            <nav class="site-navigation flex justify-content-end align-items-center">
+                                <ul class="flex flex-column flex-lg-row justify-content-lg-end align-content-center">
+                                    <li class="current-menu-item"><a href="index.html">Home</a></li>
+                                    <li><a href="about.html">About</a></li>
+                                    <li><a href="courses.html">Courses</a></li>
+                                    <li><a href="#">Test</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+                                <div class="hamburger-menu d-lg-none">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div><!-- .hamburger-menu -->
+                                <div class="header-bar-cart">
+                                    <a href="#" class="flex justify-content-center align-items-center"><span aria-hidden="true" class="icon_bag_alt"></span></a>
+                                </div><!-- .header-bar-search -->
+                            </nav><!-- .site-navigation -->
+                        </div><!-- .col -->
+                    </div><!-- .row -->
+                </div><!-- .container -->
+            </div><!-- .nav-bar -->
+        </header><!-- .site-header -->
+        <div class="page-header-overlay">
+            <div class=".property">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <header class="entry-header">
+                                <h1>Communication Test</h1>
+                            </header><!-- .entry-header -->
+                        </div><!-- .col -->
+                    </div><!-- .row -->
+                </div><!-- .container -->
+            </div><!-- .property -->
+        </div><!-- .page-header-overlay -->
+    </div><!-- .page-header -->
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-8">
+                <p><strong>Time: 60 minutes</strong></p>
+                <p><strong>Questions: 20</strong></p>
+                <form id="quizForm" class="quiz-form">
+                    <!-- Question 1 -->
+                    <div class="question">
+                        <p><strong>Question 1 (NB):</strong> Nancy is lifting a heavy box.<br>- Nancy: “Will you do me a favour?”<br>- Marry: “_________”</p>
+                        <p>A. No problem.   B. It's on the table.   C. I'm glad you like it.   D. Don’t you see I am busy?</p>
+                        <label><input type="radio" name="q1" value="A"> A</label>
+                        <label><input type="radio" name="q1" value="B"> B</label>
+                        <label><input type="radio" name="q1" value="C"> C</label>
+                        <label><input type="radio" name="q1" value="D"> D</label>
+                    </div>
+                    <!-- Question 2 -->
+                    <div class="question">
+                        <p><strong>Question 2 (NB):</strong> Lisa and Jane are talking about air pollution.<br>- Lisa: “We should use public transports to reduce smoke.”<br>- Jane: “________.”</p>
+                        <p>A. I don’t quite agree   B. I can’t agree with you more   C. It’s not true   D. You're wrong</p>
+                        <label><input type="radio" name="q2" value="A"> A</label>
+                        <label><input type="radio" name="q2" value="B"> B</label>
+                        <label><input type="radio" name="q2" value="C"> C</label>
+                        <label><input type="radio" name="q2" value="D"> D</label>
+                    </div>
+                    <!-- Question 3 -->
+                    <div class="question">
+                        <p><strong>Question 3 (NB):</strong><br>- “Hello. Can I talk to Mrs. Smith, please?”<br>- “_________.”</p>
+                        <p>A. Goodbye   B. I don’t think so   C. Hold on, please   D. I’d like to</p>
+                        <label><input type="radio" name="q3" value="A"> A</label>
+                        <label><input type="radio" name="q3" value="B"> B</label>
+                        <label><input type="radio" name="q3" value="C"> C</label>
+                        <label><input type="radio" name="q3" value="D"> D</label>
+                    </div>
+                    <!-- Question 4 -->
+                    <div class="question">
+                        <p><strong>Question 4 (NB):</strong> Jim and Dane are talking about Math exam result.<br>- Jim: “Congratulations on passing the Math exam!”<br>- Dane: “________.”</p>
+                        <p>A. I am glad you like it   B. Never mind   C. Thank you   D. Don’t mention it</p>
+                        <label><input type="radio" name="q4" value="A"> A</label>
+                        <label><input type="radio" name="q4" value="B"> B</label>
+                        <label><input type="radio" name="q4" value="C"> C</label>
+                        <label><input type="radio" name="q4" value="D"> D</label>
+                    </div>
+                    <!-- Question 5 -->
+                    <div class="question">
+                        <p><strong>Question 5 (NB):</strong> Peter and Jenny are talking about gender equality.<br>- Peter: “It’s not equal to say women have to sacrifice more in a marriage than men.”<br>- Lucy: “_________.”</p>
+                        <p>A. I’m fine   B. No problem   C. Thank you   D. I totally agree with you</p>
+                        <label><input type="radio" name="q5" value="A"> A</label>
+                        <label><input type="radio" name="q5" value="B"> B</label>
+                        <label><input type="radio" name="q5" value="C"> C</label>
+                        <label><input type="radio" name="q5" value="D"> D</label>
+                    </div>
+                    <!-- Question 6 -->
+                    <div class="question">
+                        <p><strong>Question 6 (NB):</strong> Henry and Linda are talking about weather.<br>- Henry: “How wonderful the weather is today!”<br>- Dane: “Yes. ___________.”</p>
+                        <p>A. It’s so nice   B. I’m OK   C. You’re lying   D. I have to sleep</p>
+                        <label><input type="radio" name="q6" value="A"> A</label>
+                        <label><input type="radio" name="q6" value="B"> B</label>
+                        <label><input type="radio" name="q6" value="C"> C</label>
+                        <label><input type="radio" name="q6" value="D"> D</label>
+                    </div>
+                    <!-- Question 7 -->
+                    <div class="question">
+                        <p><strong>Question 7 (TH):</strong> Esther and Joe are talking about social network.<br>- Esther: “Social network is an effective way to communicate.”<br>- Joe: “_________. However we should not overuse it.”</p>
+                        <p>A. I’m OK   B. Nonsense   C. I don’t think so   D. I agree with you</p>
+                        <label><input type="radio" name="q7" value="A"> A</label>
+                        <label><input type="radio" name="q7" value="B"> B</label>
+                        <label><input type="radio" name="q7" value="C"> C</label>
+                        <label><input type="radio" name="q7" value="D"> D</label>
+                    </div>
+                    <!-- Question 8 -->
+                    <div class="question">
+                        <p><strong>Question 8 (TH):</strong><br>- Joey: “I lost my wallet on my way to school this morning”<br>- Dane: “___________! You should be more careful next time.”</p>
+                        <p>A. It’s so nice   B. Take care   C. What a pity   D. Excuse me</p>
+                        <label><input type="radio" name="q8" value="A"> A</label>
+                        <label><input type="radio" name="q8" value="B"> B</label>
+                        <label><input type="radio" name="q8" value="C"> C</label>
+                        <label><input type="radio" name="q8" value="D"> D</label>
+                    </div>
+                    <!-- Question 9 -->
+                    <div class="question">
+                        <p><strong>Question 9 (NB):</strong><br>- Nancy: “Would you mind if I open the door?”<br>- Mary: “_________.”</p>
+                        <p>A. No. It’s OK   B. You are stupid   C. I’m working   D. Thank you</p>
+                        <label><input type="radio" name="q9" value="A"> A</label>
+                        <label><input type="radio" name="q9" value="B"> B</label>
+                        <label><input type="radio" name="q9" value="C"> C</label>
+                        <label><input type="radio" name="q9" value="D"> D</label>
+                    </div>
+                    <!-- Question 10 -->
+                    <div class="question">
+                        <p><strong>Question 10 (NB):</strong><br>- Nick: “Your English is much better now.”<br>- Jane: “________. I thought it’s still terrible.”</p>
+                        <p>A. You must be kidding   B. That’s right   C. It’s my pleasure   D. You’re lying</p>
+                        <label><input type="radio" name="q10" value="A"> A</label>
+                        <label><input type="radio" name="q10" value="B"> B</label>
+                        <label><input type="radio" name="q10" value="C"> C</label>
+                        <label><input type="radio" name="q10" value="D"> D</label>
+                    </div>
+                    <!-- Question 11 -->
+                    <div class="question">
+                        <p><strong>Question 11 (NB):</strong><br>- Lucy: “May I borrow your ruler?”<br>- Katty: “Certainly. _________.”</p>
+                        <p>A. No problem   B. Not at all   C. Here you are   D. Hold on, please</p>
+                        <label><input type="radio" name="q11" value="A"> A</label>
+                        <label><input type="radio" name="q11" value="B"> B</label>
+                        <label><input type="radio" name="q11" value="C"> C</label>
+                        <label><input type="radio" name="q11" value="D"> D</label>
+                    </div>
+                    <!-- Question 12 -->
+                    <div class="question">
+                        <p><strong>Question 12 (NB):</strong><br>- Jenny: “I passed the driving test yesterday.”<br>- Jack: “________!”</p>
+                        <p>A. Congratulation   B. Thank you   C. Poor you   D. Have a good time</p>
+                        <label><input type="radio" name="q12" value="A"> A</label>
+                        <label><input type="radio" name="q12" value="B"> B</label>
+                        <label><input type="radio" name="q12" value="C"> C</label>
+                        <label><input type="radio" name="q12" value="D"> D</label>
+                    </div>
+                    <!-- Question 13 -->
+                    <div class="question">
+                        <p><strong>Question 13 (NB):</strong><br>- Mary: “Thanks for your help.”<br>- John: “_________.”</p>
+                        <p>A. My happiness   B. My excitement   C. My pleasure   D. My delight</p>
+                        <label><input type="radio" name="q13" value="A"> A</label>
+                        <label><input type="radio" name="q13" value="B"> B</label>
+                        <label><input type="radio" name="q13" value="C"> C</label>
+                        <label><input type="radio" name="q13" value="D"> D</label>
+                    </div>
+                    <!-- Question 14 -->
+                    <div class="question">
+                        <p><strong>Question 14 (NB):</strong><br>- Waiter: “Here’s your bill, sir.”<br>- Customer: “________”</p>
+                        <p>A. Don’t mention it.   B. You’re welcome.   C. What do you want.   D. Can I pay by credit card?</p>
+                        <label><input type="radio" name="q14" value="A"> A</label>
+                        <label><input type="radio" name="q14" value="B"> B</label>
+                        <label><input type="radio" name="q14" value="C"> C</label>
+                        <label><input type="radio" name="q14" value="D"> D</label>
+                    </div>
+                    <!-- Question 15 -->
+                    <div class="question">
+                        <p><strong>Question 15 (NB):</strong> Jack and Karry are talking about the mid-term test results.<br>- Jack: “Are your results OK?”<br>- Karry: “_________. It’s not as good as my expectation.”</p>
+                        <p>A. No problem   B. Don’t mention it   C. I’m happy   D. Not too bad</p>
+                        <label><input type="radio" name="q15" value="A"> A</label>
+                        <label><input type="radio" name="q15" value="B"> B</label>
+                        <label><input type="radio" name="q15" value="C"> C</label>
+                        <label><input type="radio" name="q15" value="D"> D</label>
+                    </div>
+                    <!-- Question 16 -->
+                    <div class="question">
+                        <p><strong>Question 16 (NB):</strong> Jane and Lirah are in a restaurant.<br>- Jane: “Would you like some more chicken?”<br>- Lirah: “________. I’m full now.”</p>
+                        <p>A. Yes, please   B. You’re crazy   C. No, thanks   D. Good idea</p>
+                        <label><input type="radio" name="q16" value="A"> A</label>
+                        <label><input type="radio" name="q16" value="B"> B</label>
+                        <label><input type="radio" name="q16" value="C"> C</label>
+                        <label><input type="radio" name="q16" value="D"> D</label>
+                    </div>
+                    <!-- Question 17 -->
+                    <div class="question">
+                        <p><strong>Question 17 (NB):</strong><br>- Anson: “Mike, could you do something for me, please?”<br>- Mike: “_________. What would you like me to do?”</p>
+                        <p>A. Excuse me   B. No, I couldn’t   C. Sorry, Anson   D. Certainly</p>
+                        <label><input type="radio" name="q17" value="A"> A</label>
+                        <label><input type="radio" name="q17" value="B"> B</label>
+                        <label><input type="radio" name="q17" value="C"> C</label>
+                        <label><input type="radio" name="q17" value="D"> D</label>
+                    </div>
+                    <!-- Question 18 -->
+                    <div class="question">
+                        <p><strong>Question 18 (NB):</strong> Mark and Andrew are talking about the entrance examination.<br>- Lisa: “The entrance exam is so stressful. I’m very afraid.”<br>- Jane: “________. I’m worried I can’t pass it.”</p>
+                        <p>A. So do I   B. I don’t think so   C. Neither do I   D. It’s too easy</p>
+                        <label><input type="radio" name="q18" value="A"> A</label>
+                        <label><input type="radio" name="q18" value="B"> B</label>
+                        <label><input type="radio" name="q18" value="C"> C</label>
+                        <label><input type="radio" name="q18" value="D"> D</label>
+                    </div>
+                    <!-- Question 19 -->
+                    <div class="question">
+                        <p><strong>Question 19 (NB):</strong><br>- Anna: “Congratulations on getting the job!”<br>- Mary: “_________.”</p>
+                        <p>A. No problem   B. I’m the best   C. Thank you   D. No, thanks</p>
+                        <label><input type="radio" name="q19" value="A"> A</label>
+                        <label><input type="radio" name="q19" value="B"> B</label>
+                        <label><input type="radio" name="q19" value="C"> C</label>
+                        <label><input type="radio" name="q19" value="D"> D</label>
+                    </div>
+                    <!-- Question 20 -->
+                    <div class="question">
+                        <p><strong>Question 20 (NB):</strong> Larah and Johnson are talking about the dishes that she cooked.<br>- Johnson: “They are all so tasty, Larah.”<br>- Jane: “Thank you. ________.”</p>
+                        <p>A. I think you are wrong   B. I’m glad you like them   C. No, I wouldn’t   D. You must be kidding</p>
+                        <label><input type="radio" name="q20" value="A"> A</label>
+                        <label><input type="radio" name="q20" value="B"> B</label>
+                        <label><input type="radio" name="q20" value="C"> C</label>
+                        <label><input type="radio" name="q20" value="D"> D</label>
+                    </div>
+                </form>
+            </div><!-- .col-12 col-lg-8 -->
+            <div class="col-12 col-lg-4">
+                <div class="quiz-sidebar">
+                    <div class="timer">
+                        <h3>Time remaining: <span id="timer">20:00</span></h3>
+                    </div>
+                    <div class="question-status">
+                        <h3>Question status</h3>
+                        <div class="question-grid">
+                            <!-- JavaScript will populate this -->
+                        </div>
+                    </div>
+                    <button id="sidebarSubmitBtn" class="submit-btn">Submit</button>
+                </div>
+            </div><!-- .col-12 col-lg-4 -->
+        </div><!-- .row -->
+    </div><!-- .container -->
+    <script>
+        const correctAnswers = {
+            q1: 'A', q2: 'B', q3: 'C', q4: 'C', q5: 'D', q6: 'A', q7: 'D', q8: 'C', q9: 'A', q10: 'A',
+            q11: 'C', q12: 'A', q13: 'C', q14: 'D', q15: 'D', q16: 'C', q17: 'D', q18: 'C', q19: 'C', q20: 'B'
+        };
+    </script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="script1.js"></script>
+    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93e1effd5d40ad5e',t:'MTc0Njk2OTI0Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</body>
+</html>

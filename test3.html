@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>High School Proficiency Test 3</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <!-- ElegantFonts CSS -->
+    <link rel="stylesheet" href="css/elegant-fonts.css">
+
+    <!-- themify-icons CSS -->
+    <link rel="stylesheet" href="css/themify-icons.css">
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="css/swiper.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles1.css">
+</head>
+<body>
+    <!-- Confirmation Modal -->
+    <div id="confirmModal" class="modal">
+        <div class="modal-content">
+            <h3>Confirm submission</h3>
+            <p>You have answered <span id="answeredCount">0</span>/40 questions.<br> Are you sure you want to submit?</p>
+            <div class="modal-buttons">
+                <button id="confirmSubmitBtn" class="modal-btn confirm">Submit</button>
+                <button id="cancelSubmitBtn" class="modal-btn cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <!-- Result Modal -->
+    <div id="resultModal" class="modal">
+        <div class="modal-content">
+            <h3>Result</h3>
+            <p>Your score: <span id="finalScore">0</span>/10</p>
+            <div class="modal-buttons">
+                <button id="closeResultBtn" class="modal-btn confirm">Confirm</button>
+            </div>
+        </div>
+    </div>
+    <div class="page-header">
+        <header class="site-header">
+            <div class="top-header-bar">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12 col-lg-6 d-none d-md-flex flex-wrap justify-content-center justify-content-lg-start mb-3 mb-lg-0">
+                            <div class="header-bar-email d-flex align-items-center">
+                                <i class="fa fa-envelope"></i><a href="#"><span class="__cf_email__" data-cfemail="277e4f5b545459064c4d5b414f4667404a464e4b0944484a">[email&#160;protected]</span></a>
+                            </div><!-- .header-bar-email -->
+                            <div class="header-bar-text lg-flex align-items-center">
+                                <p><i class="fa fa-phone"></i>001-1234-88888 </p>
+                            </div><!-- .header-bar-text -->
+                        </div><!-- .col -->
+                        <div class="col-12 col-lg-6 d-flex flex-wrap justify-content-center justify-content-lg-end align-items-center">
+                            <div class="header-bar-search">
+                                <form class="flex align-items-stretch">
+                                    <input type="search" placeholder="What would you like to learn?">
+                                    <button type="submit" value="" class="flex justify-content-center align-items-center"><i class="fa fa-search"></i></button>
+                                </form>
+                            </div><!-- .header-bar-search -->
+                            <div class="header-bar-menu">
+                                <ul class="flex justify-content-center align-items-center py-2 pt-md-0">
+                                    <li><a href="#">Register</a></li>
+                                    <li><a href="#">Login</a></li>
+                                </ul>
+                            </div><!-- .header-bar-menu -->
+                        </div><!-- .col -->
+                    </div><!-- .row -->
+                </div><!-- .container-fluid -->
+            </div><!-- .top-header-bar -->
+            <div class="nav-bar">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-9 col-lg-3">
+                            <div class="site-branding">
+                                <h1 class="site-title"><a href="index.html" rel="home">Ezu<span>ca</span></a></h1>
+                            </div><!-- .site-branding -->
+                        </div><!-- .col -->
+                        <div class="col-3 col-lg-9 flex justify-content-end align-content-center">
+                            <nav class="site-navigation flex justify-content-end align-items-center">
+                                <ul class="flex flex-column flex-lg-row justify-content-lg-end align-content-center">
+                                    <li class="current-menu-item"><a href="index.html">Home</a></li>
+                                    <li><a href="about.html">About</a></li>
+                                    <li><a href="courses.html">Courses</a></li>
+                                    <li><a href="#">Test</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+                                <div class="hamburger-menu d-lg-none">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div><!-- .hamburger-menu -->
+                                <div class="header-bar-cart">
+                                    <a href="#" class="flex justify-content-center align-items-center"><span aria-hidden="true" class="icon_bag_alt"></span></a>
+                                </div><!-- .header-bar-search -->
+                            </nav><!-- .site-navigation -->
+                        </div><!-- .col -->
+                    </div><!-- .row -->
+                </div><!-- .container -->
+            </div><!-- .nav-bar -->
+        </header><!-- .site-header -->
+        <div class="page-header-overlay">
+            <div class=".property">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <header class="entry-header">
+                                <h1>High School Proficiency Test</h1>
+                            </header><!-- .entry-header -->
+                        </div><!-- .col -->
+                    </div><!-- .row -->
+                </div><!-- .container -->
+            </div><!-- .property -->
+        </div><!-- .page-header-overlay -->
+    </div><!-- .page-header -->
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-8">
+                <h1></h1>
+                <h2></h2>
+                <p><strong>Time: 60 minutes</strong></p>
+                <p><strong>Questions: 40</strong></p>
+                <form id="quizForm" class="quiz-form">
+                    <!-- Question 1 -->
+                    <div class="question">
+                        <p><strong>Question 1 (NB):</strong> Mark the letter A, B, C, or D to indicate the word whose underlined part differs from the other three in pronunciation.</p>
+                        <p>A. complained   B. neglected   C. denied   D. admired</p>
+                        <label><input type="radio" name="q1" value="A"> A</label>
+                        <label><input type="radio" name="q1" value="B"> B</label>
+                        <label><input type="radio" name="q1" value="C"> C</label>
+                        <label><input type="radio" name="q1" value="D"> D</label>
+                    </div>
+                    <!-- Question 2 -->
+                    <div class="question">
+                        <p><strong>Question 2 (NB):</strong> Mark the letter A, B, C, or D to indicate the word whose underlined part differs from the other three in pronunciation.</p>
+                        <p>A. garages   B. boats   C. bikes   D. roofs</p>
+                        <label><input type="radio" name="q2" value="A"> A</label>
+                        <label><input type="radio" name="q2" value="B"> B</label>
+                        <label><input type="radio" name="q2" value="C"> C</label>
+                        <label><input type="radio" name="q2" value="D"> D</label>
+                    </div>
+                    <!-- Question 3 -->
+                    <div class="question">
+                        <p><strong>Question 3 (TH):</strong> Mark the letter A, B, C, or D to indicate the word that differs from the other three in the position of primary stress.</p>
+                        <p>A. celebrate   B. survive   C. fascinating   D. elephant</p>
+                        <label><input type="radio" name="q3" value="A"> A</label>
+                        <label><input type="radio" name="q3" value="B"> B</label>
+                        <label><input type="radio" name="q3" value="C"> C</label>
+                        <label><input type="radio" name="q3" value="D"> D</label>
+                    </div>
+                    <!-- Question 4 -->
+                    <div class="question">
+                        <p><strong>Question 4 (TH):</strong> Mark the letter A, B, C, or D to indicate the word that differs from the other three in the position of primary stress.</p>
+                        <p>A. majority   B. minority   C. partnership   D. enjoyable</p>
+                        <label><input type="radio" name="q4" value="A"> A</label>
+                        <label><input type="radio" name="q4" value="B"> B</label>
+                        <label><input type="radio" name="q4" value="C"> C</label>
+                        <label><input type="radio" name="q4" value="D"> D</label>
+                    </div>
+                    <!-- Question 5 -->
+                    <div class="question">
+                        <p><strong>Question 5 (NB):</strong> English, Maths and Science are core subjects, which are _______ in the national examination at certain stages of the school education system.</p>
+                        <p>A. compulsory   B. optional   C. dependent   D. compulsative</p>
+                        <label><input type="radio" name="q5" value="A"> A</label>
+                        <label><input type="radio" name="q5" value="B"> B</label>
+                        <label><input type="radio" name="q5" value="C"> C</label>
+                        <label><input type="radio" name="q5" value="D"> D</label>
+                    </div>
+                    <!-- Question 6 -->
+                    <div class="question">
+                        <p><strong>Question 6 (NB):</strong> When you come to the interview, remember to bring with you your school _______ and letters of recommendation from your teachers or your previous employers.</p>
+                        <p>A. certificates   B. reports   C. diploma   D. qualification</p>
+                        <label><input type="radio" name="q6" value="A"> A</label>
+                        <label><input type="radio" name="q6" value="B"> B</label>
+                        <label><input type="radio" name="q6" value="C"> C</label>
+                        <label><input type="radio" name="q6" value="D"> D</label>
+                    </div>
+                    <!-- Question 7 -->
+                    <div class="question">
+                        <p><strong>Question 7 (TH):</strong> To have a good interview, candidates should know as many as possible about the job and ________.</p>
+                        <p>A. co-workers   B. interviewer   C. employers   D. vacancy</p>
+                        <label><input type="radio" name="q7" value="A"> A</label>
+                        <label><input type="radio" name="q7" value="B"> B</label>
+                        <label><input type="radio" name="q7" value="C"> C</label>
+                        <label><input type="radio" name="q7" value="D"> D</label>
+                    </div>
+                    <!-- Question 8 -->
+                    <div class="question">
+                        <p><strong>Question 8 (TH):</strong> Although life is hard, she always keeps her mind ___________.</p>
+                        <p>A. pessimistic   B. optimistic   C. pessimisticism   D. optimisticism</p>
+                        <label><input type="radio" name="q8" value="A"> A</label>
+                        <label><input type="radio" name="q8" value="B"> B</label>
+                        <label><input type="radio" name="q8" value="C"> C</label>
+                        <label><input type="radio" name="q8" value="D"> D</label>
+                    </div>
+                    <!-- Question 9 -->
+                    <div class="question">
+                        <p><strong>Question 9 (TH):</strong> Thanks to _________ devices, household chores no longer be a burden.</p>
+                        <p>A. shopping   B. internet   C. labour-saving   D. electricity</p>
+                        <label><input type="radio" name="q9" value="A"> A</label>
+                        <label><input type="radio" name="q9" value="B"> B</label>
+                        <label><input type="radio" name="q9" value="C"> C</label>
+                        <label><input type="radio" name="q9" value="D"> D</label>
+                    </div>
+                    <!-- Question 10 -->
+                    <div class="question">
+                        <p><strong>Question 10 (VDC):</strong> Anne ______ to make dinner ready before everyone _____ home by her Mom.</p>
+                        <p>A. asked – got   B. asks – get   C. was asked – get   D. was asked - got</p>
+                        <label><input type="radio" name="q10" value="A"> A</label>
+                        <label><input type="radio" name="q10" value="B"> B</label>
+                        <label><input type="radio" name="q10" value="C"> C</label>
+                        <label><input type="radio" name="q10" value="D"> D</label>
+                    </div>
+                    <!-- Question 11 -->
+                    <div class="question">
+                        <p><strong>Question 11 (TH):</strong> In the future, ________ petrol or gas, car will run on anything such as electricity or wind power.</p>
+                        <p>A. instead   B. instead of   C. except   D. in addition</p>
+                        <label><input type="radio" name="q11" value="A"> A</label>
+                        <label><input type="radio" name="q11" value="B"> B</label>
+                        <label><input type="radio" name="q11" value="C"> C</label>
+                        <label><input type="radio" name="q11" value="D"> D</label>
+                    </div>
+                    <!-- Question 12 -->
+                    <div class="question">
+                        <p><strong>Question 12 (VD):</strong> If we ________ a city map, we wouldn’t have got lost.</p>
+                        <p>A. brought   B. bring   C. had brought   D. have brought</p>
+                        <label><input type="radio" name="q12" value="A"> A</label>
+                        <label><input type="radio" name="q12" value="B"> B</label>
+                        <label><input type="radio" name="q12" value="C"> C</label>
+                        <label><input type="radio" name="q12" value="D"> D</label>
+                    </div>
+                    <!-- Question 13 -->
+                    <div class="question">
+                        <p><strong>Question 13 (NB):</strong> The most important thing is keep yourself <u>occupied</u>.</p>
+                        <p>A. free   B. busy   C. relax   D. comfortable</p>
+                        <label><input type="radio" name="q13" value="A"> A</label>
+                        <label><input type="radio" name="q13" value="B"> B</label>
+                        <label><input type="radio" name="q13" value="C"> C</label>
+                        <label><input type="radio" name="q13" value="D"> D</label>
+                    </div>
+                    <!-- Question 14 -->
+                    <div class="question">
+                        <p><strong>Question 14 (NB):</strong> She was <u>brought-up</u> in a well-off family. She can’t understand the problem we are facing.</p>
+                        <p>A. wealthy   B. kind   C. poor   D. broke</p>
+                        <label><input type="radio" name="q14" value="A"> A</label>
+                        <label><input type="radio" name="q14" value="B"> B</label>
+                        <label><input type="radio" name="q14" value="C"> C</label>
+                        <label><input type="radio" name="q14" value="D"> D</label>
+                    </div>
+                    <!-- Question 15 -->
+                    <div class="question">
+                        <p><strong>Question 15 (NB):</strong> I would happy to <u>go along with</u> the idea.</p>
+                        <p>A. to disagree with the idea   B. to agree with the idea   C. to support the idea   D. to approve with the idea</p>
+                        <label><input type="radio" name="q15" value="A"> A</label>
+                        <label><input type="radio" name="q15" value="B"> B</label>
+                        <label><input type="radio" name="q15" value="C"> C</label>
+                        <label><input type="radio" name="q15" value="D"> D</label>
+                    </div>
+                    <!-- Question 16 -->
+                    <div class="question">
+                        <p><strong>Question 16 (NB):</strong> <u>Punctuality</u> is imperative in your new job.</p>
+                        <p>A. Being late   B. Being cheerful   C. Being courteous   D. Being efficient</p>
+                        <label><input type="radio" name="q16" value="A"> A</label>
+                        <label><input type="radio" name="q16" value="B"> B</label>
+                        <label><input type="radio" name="q16" value="C"> C</label>
+                        <label><input type="radio" name="q16" value="D"> D</label>
+                    </div>
+                    <!-- Question 17 -->
+                    <div class="question">
+                        <p><strong>Question 17 (NB):</strong> Lirah: “Make yourself at home.”<br>Kate: “_________.”</p>
+                        <p>A. No problem   B. Not at all   C. That’s very kind. Thank you   D. Thanks. Same to you</p>
+                        <label><input type="radio" name="q17" value="A"> A</label>
+                        <label><input type="radio" name="q17" value="B"> B</label>
+                        <label><input type="radio" name="q17" value="C"> C</label>
+                        <label><input type="radio "name="q17" value="D"> D</label>
+                    </div>
+                    <!-- Question 18 -->
+                    <div class="question">
+                        <p><strong>Question 18 (NB):</strong> Susan accidentally stepped on Diana’s foot.<br>Susan: “Opps! I’m sorry, Diana.”<br>Diana: “________.”</p>
+                        <p>A. You shouldn’t do that   B. It’s OK   C. You’re welcome   D. It’s nonsense</p>
+                        <label><input type="radio" name="q18" value="A"> A</label>
+                        <label><input type="radio" name="q18" value="B"> B</label>
+                        <label><input type="radio" name="q18" value="C"> C</label>
+                        <label><input type="radio" name="q18" value="D"> D</label>
+                    </div>
+                    <!-- Question 19 -->
+                    <div class="question">
+                        <p><strong>Question 19 (NB):</strong> Around 200 million people are employed in tourism worldwide, making it the largest industry in the modern global (19) ______.</p>
+                        <p>A. economic   B. economy   C. economize   D. economically</p>
+                        <label><input type="radio" name="q19" value="A"> A</label>
+                        <label><input type="radio" name="q19" value="B"> B</label>
+                        <label><input type="radio" name="q19" value="C"> C</label>
+                        <label><input type="radio" name="q19" value="D"> D</label>
+                    </div>
+                    <!-- Question 20 -->
+                    <div class="question">
+                        <p><strong>Question 20 (TH):</strong> Some of (20) ______ biggest beneficiaries are less developed countries, where it is often their main source of income.</p>
+                        <p>A. a   B. an   C. the   D. no article</p>
+                        <label><input type="radio" name="q20" value="A"> A</label>
+                        <label><input type="radio" name="q20" value="B"> B</label>
+                        <label><input type="radio" name="q20" value="C"> C</label>
+                        <label><input type="radio" name="q20" value="D"> D</label>
+                    </div>
+                    <!-- Question 21 -->
+                    <div class="question">
+                        <p><strong>Question 21 (TH):</strong> (21) ______ , along with the economic benefits, this mass movement of people has resulted in threats to the environment.</p>
+                        <p>A. However   B. Thus   C. Moreover   D. Additionally</p>
+                        <label><input type="radio" name="q21" value="A"> A</label>
+                        <label><input type="radio" name="q21" value="B"> B</label>
+                        <label><input type="radio" name="q21" value="C"> C</label>
+                        <label><input type="radio" name="q21" value="D"> D</label>
+                    </div>
+                    <!-- Question 22 -->
+                    <div class="question">
+                        <p><strong>Question 22 (VD):</strong> People often forget the damage caused by carbon dioxide emissions from aircraft, (22) ______ contribute directly to global warming.</p>
+                        <p>A. that   B. what   C. which   D. who</p>
+                        <label><input type="radio" name="q22" value="A"> A</label>
+                        <label><input type="radio" name="q22" value="B"> B</label>
+                        <label><input type="radio" name="q22" value="C"> C</label>
+                        <label><input type="radio" name="q22" value="D"> D</label>
+                    </div>
+                    <!-- Question 23 -->
+                    <div class="question">
+                        <p><strong>Question 23 (VD):</strong> By pushing up prices for goods and services, tourism can also be (23) ______ to the people who live in tourist destinations.</p>
+                        <p>A. harmless   B. harmful   C. harmfully   D. harmfulness</p>
+                        <label><input type="radio" name="q23" value="A"> A</label>
+                        <label><input type="radio" name="q23" value="B"> B</label>
+                        <label><input type="radio" name="q23" value="C"> C</label>
+                        <label><input type="radio" name="q23" value="D"> D</label>
+                    </div>
+                    <!-- Question 24 -->
+                    <div class="question">
+                        <p><strong>Question 24 (TH):</strong> According to the first three paragraphs, technological tools that were designed to make our lives easier ____________.</p>
+                        <p>A. have not interfered with our privacy   B. have turned out to do us more harm than good   C. have brought us complete happiness   D. have fully met our expectations</p>
+                        <label><input type="radio" name="q24" value="A"> A</label>
+                        <label><input type="radio" name="q24" value="B"> B</label>
+                        <label><input type="radio" name="q24" value="C"> C</label>
+                        <label><input type="radio" name="q24" value="D"> D</label>
+                    </div>
+                    <!-- Question 25 -->
+                    <div class="question">
+                        <p><strong>Question 25 (NB):</strong> Which of the following is NOT true about technological tools, according to new surveys?</p>
+                        <p>A. They are being increasingly used.   B. They are used even during vacations.   C. They make our life more stressful.   D. They bring more leisure to our life.</p>
+                        <label><input type="radio" name="q25" value="A"> A</label>
+                        <label><input type="radio" name="q25" value="B"> B</label>
+                        <label><input type="radio" name="q25" value="C"> C</label>
+                        <label><input type="radio" name="q25" value="D"> D</label>
+                    </div>
+                    <!-- Question 26 -->
+                    <div class="question">
+                        <p><strong>Question 26 (NB):</strong> Which of the following is true, according to the passage?</p>
+                        <p>A. Students used to have to study more about technological advances.   B. People have more opportunities to get access to technological applications.   C. Employees were supposed to make technology do what they expected.   D. People now enjoy greater freedom thanks to the technological boom.</p>
+                        <label><input type="radio" name="q26" value="A"> A</label>
+                        <label><input type="radio" name="q26" value="B"> B</label>
+                        <label><input type="radio" name="q26" value="C"> C</label>
+                        <label><input type="radio" name="q26" value="D"> D</label>
+                    </div>
+                    <!-- Question 27 -->
+                    <div class="question">
+                        <p><strong>Question 27 (NB):</strong> The word “<u>inconceivable</u>” in the passage is closest in meaning to "_______".</p>
+                        <p>A. unimaginable   B. predictable   C. foreseeable   D. unforgettable</p>
+                        <label><input type="radio" name="q27" value="A"> A</label>
+                        <label><input type="radio" name="q27" value="B"> B</label>
+                        <label><input type="radio" name="q27" value="C"> C</label>
+                        <label><input type="radio" name="q27" value="D"> D</label>
+                    </div>
+                    <!-- Question 28 -->
+                    <div class="question">
+                        <p><strong>Question 28 (TH):</strong> It can be inferred from the fourth paragraph that _____________.</p>
+                        <p>A. employees have more freedom to decide what time they start and finish work   B. life is more relaxing with cell phones and other technological devices   C. employers are more demanding and have efficient means to monitor employees   D. it is compulsory that employees go to the office, even on days off</p>
+                        <label><input type="radio" name="q28" value="A"> A</label>
+                        <label><input type="radio" name="q28" value="B"> B</label>
+                        <label><input type="radio" name="q28" value="C"> C</label>
+                        <label><input type="radio" name="q28" value="D"> D</label>
+                    </div>
+                    <!-- Question 29 -->
+                    <div class="question">
+                        <p><strong>Question 29 (TH):</strong> The word “They” in the fourth paragraph refers to ____________.</p>
+                        <p>A. employers   B. workers   C. employees   D. tasks</p>
+                        <label><input type="radio" name="q29" value="A"> A</label>
+                        <label><input type="radio" name="q29" value="B"> B</label>
+                        <label><input type="radio" name="q29" value="C"> C</label>
+                        <label><input type="radio" name="q29" value="D"> D</label>
+                    </div>
+                    <!-- Question 30 -->
+                    <div class="question">
+                        <p><strong>Question 30 (VD):</strong> Which of the following could be the main idea of the fifth paragraph?</p>
+                        <p>A. New technological advances have added more stress to daily life.   B. New technological applications are wise entertainment choices of our modern time.   C. New technological advances have reduced work performance.   D. The coming of new technological advances has spoiled family and social relationships.</p>
+                        <label><input type="radio" name="q30" value="A"> A</label>
+                        <label><input type="radio" name="q30" value="B"> B</label>
+                        <label><input type="radio" name="q30" value="C"> C</label>
+                        <label><input type="radio" name="q30" value="D"> D</label>
+                    </div>
+                    <!-- Question 31 -->
+                    <div class="question">
+                        <p><strong>Question 31 (VD):</strong> This passage has probably been taken from ________________.</p>
+                        <p>A. an advertisement   B. a science review   C. a political journal   D. a fashion magazine</p>
+                        <label><input type="radio" name="q31" value="A"> A</label>
+                        <label><input type="radio" name="q31" value="B"> B</label>
+                        <label><input type="radio" name="q31" value="C"> C</label>
+                        <label><input type="radio" name="q31" value="D"> D</label>
+                    </div>
+                    <!-- Question 32 -->
+                    <div class="question">
+                        <p><strong>Question 32 (VD):</strong> These activities are considered as a chance for new comers to <u>socializing</u> with their colleages in company.</p>
+                        <p>Identify the underlined part that needs correction.</p>
+                        <label><input type="radio" name="q32" value="A"> socializing</label>
+                        <label><input type="radio" name="q32" value="B"> new comers</label>
+                        <label><input type="radio" name="q32" value="C"> colleages</label>
+                        <label><input type="radio" name="q32" value="D"> in company</label>
+                    </div>
+                    <!-- Question 33 -->
+                    <div class="question">
+                        <p><strong>Question 33 (VD):</strong> If he <u>has had</u> a thorough knowledge of English, he could have applied for this post.</p>
+                        <p>Identify the underlined part that needs correction.</p>
+                        <label><input type="radio" name="q33" value="A"> has had</label>
+                        <label><input type="radio" name="q33" value="B"> thorough knowledge</label>
+                        <label><input type="radio" name="q33" value="C"> could have applied</label>
+                        <label><input type="radio" name="q33" value="D"> for this post</label>
+                    </div>
+                    <!-- Question 34 -->
+                    <div class="question">
+                        <p><strong>Question 34 (VDC):</strong> The education in Japan would have gone down if the basic principles of education <u>hadn’t taken</u> into consideration.</p>
+                        <p>Identify the underlined part that needs correction.</p>
+                        <label><input type="radio" name="q34" value="A"> would have gone</label>
+                        <label><input type="radio" name="q34" value="B"> hadn’t taken</label>
+                        <label><input type="radio" name="q34" value="C"> basic principles</label>
+                        <label><input type="radio" name="q34" value="D"> into consideration</label>
+                    </div>
+                    <!-- Question 35 -->
+                    <div class="question">
+                        <p><strong>Question 35 (VD):</strong> Stop talking or you won’t understand the way to solve this problem.</p>
+                        <p>A. If you keep talking, you will understand the way to solve this problem.   B. If you keep talking, you won’t understand the way to solve this problem.   C. Although you keep talking, you can understand the way to solve this problem.   D. If you stop talking, you won’t understand the way to solve this problem.</p>
+                        <label><input type="radio" name="q35" value="A"> A</label>
+                        <label><input type="radio" name="q35" value="B"> B</label>
+                        <label><input type="radio" name="q35" value="C"> C</label>
+                        <label><input type="radio" name="q35" value="D"> D</label>
+                    </div>
+                    <!-- Question 36 -->
+                    <div class="question">
+                        <p><strong>Question 36 (VD):</strong> The Greens are going to paint this house and these cars for Christmas Day.</p>
+                        <p>A. The Greens are going have someone painted that house and those cars for Christmas Day.   B. The Greens are going have someone painted this house and these cars for Christmas Day.   C. This house and these cars are going to be painted for Christmas day by the Greens.   D. This house and these cars are going to paint for Christmas day by the Greens.</p>
+                        <label><input type="radio" name="q36" value="A"> A</label>
+                        <label><input type="radio" name="q36" value="B"> B</label>
+                        <label><input type="radio" name="q36" value="C"> C</label>
+                        <label><input type="radio" name="q36" value="D"> D</label>
+                    </div>
+                    <!-- Question 37 -->
+                    <div class="question">
+                        <p><strong>Question 37 (VDC):</strong> Have the thieves stolen the most valuable painting in the national museum?</p>
+                        <p>A. Has the most valuable painting in the national museum not been stolen by the thieves.   B. Has the unvaluable painting in the national museum been stolen by the thieves.   C. Has the most valuable painting in the national museum been stolen by the thieves.   D. Has the unvaluable painting in the national museum been stolen by the thieves.</p>
+                        <label><input type="radio" name="q37" value="A"> A</label>
+                        <label><input type="radio" name="q37" value="B"> B</label>
+                        <label><input type="radio" name="q37" value="C"> C</label>
+                        <label><input type="radio" name="q37" value="D"> D</label>
+                    </div>
+                    <!-- Question 38 -->
+                    <div class="question">
+                        <p><strong>Question 38 (VD):</strong> She wrote the text. She selected the illustration as well.</p>
+                        <p>A. In order to select the illustration, she had to write the text.   B. The text she wrote was not as good as the illustration she selected.   C. She not only wrote the text but also selected the illustration.   D. If she had written the text, she would have selected the illustration.</p>
+                        <label><input type="radio" name="q38" value="A"> A</label>
+                        <label><input type="radio" name="q38" value="B"> B</label>
+                        <label><input type="radio" name="q38" value="C"> C</label>
+                        <label><input type="radio" name="q38" value="D"> D</label>
+                    </div>
+                    <!-- Question 39 -->
+                    <div class="question">
+                        <p><strong>Question 39 (VD):</strong> Everyone was watching the little dog. They was greatly amused at it.</p>
+                        <p>A. Everyone felt great and amused when the little dog was watching them.   B. The little dog was watching everyone with great amusement.   C. Everyone was greatly amused at the dog which they was watching.   D. The little dog was greatly amused by the way everyone was watching it.</p>
+                        <label><input type="radio" name="q39" value="A"> A</label>
+                        <label><input type="radio" name="q39" value="B"> B</label>
+                        <label><input type="radio" name="q39" value="C"> C</label>
+                        <label><input type="radio" name="q39" value="D"> D</label>
+                    </div>
+                    <!-- Question 40 -->
+                    <div class="question">
+                        <p><strong>Question 40 (VDC):</strong> The candidate was offered the job. The reason was that he had excellent answers.</p>
+                        <p>A. The job was offered to the candidate although he couldn’t answer the question.   B. If it hadn’t been for the candidate’s excellent answers, he couldn’t have got the job.   C. The candidate answered the questions so excellently that he might get the job.   D. Because it was such a good job, the candidate tried to answer the questions excellently.</p>
+                        <label><input type="radio" name="q40" value="A"> A</label>
+                        <label><input type="radio" name="q40" value="B"> B</label>
+                        <label><input type="radio" name="q40" value="C"> C</label>
+                        <label><input type="radio" name="q40" value="D"> D</label>
+                    </div>
+                </form>
+            </div><!-- .col-12 col-lg-8 -->
+            <div class="col-12 col-lg-4">
+                <div class="quiz-sidebar">
+                    <div class="timer">
+                        <h3>Time remaining: <span id="timer">60:00</span></h3>
+                    </div>
+                    <div class="question-status">
+                        <h3>Question status</h3>
+                        <div class="question-grid">
+                            <!-- JavaScript will populate this -->
+                        </div>
+                    </div>
+                    <button id="sidebarSubmitBtn" class="submit-btn">Submit</button>
+                </div>
+            </div><!-- .col-12 col-lg-4 -->
+        </div><!-- .row -->
+    </div><!-- .container -->
+    <script>
+        const correctAnswers = {
+            q1: 'A', q2: 'A', q3: 'C', q4: 'B', q5: 'A', q6: 'A', q7: 'C', q8: 'B', q9: 'C', q10: 'D',
+            q11: 'B', q12: 'C', q13: 'B', q14: 'A', q15: 'A', q16: 'A', q17: 'C', q18: 'B', q19: 'B', q20: 'C',
+            q21: 'A', q22: 'C', q23: 'B', q24: 'B', q25: 'D', q26: 'B', q27: 'A', q28: 'C', q29: 'C', q30: 'A',
+            q31: 'B', q32: 'A', q33: 'A', q34: 'B', q35: 'B', q36: 'C', q37: 'C', q38: 'C', q39: 'C', q40: 'B'
+        };
+    </script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="script1.js"></script>
+    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93e1effd5d40ad5e',t:'MTc0Njk2OTI0Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</body>
+</html>

@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>High School Proficiency Test 2 </title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <!-- ElegantFonts CSS -->
+    <link rel="stylesheet" href="css/elegant-fonts.css">
+
+    <!-- themify-icons CSS -->
+    <link rel="stylesheet" href="css/themify-icons.css">
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="css/swiper.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles1.css">
+</head>
+<body>
+    <!-- Confirmation Modal -->
+    <div id="confirmModal" class="modal">
+        <div class="modal-content">
+            <h3>Confirm submission</h3>
+            <p>You have answered <span id="answeredCount">0</span>/40 questions.<br> Are you sure you want to submit?</p>
+            <div class="modal-buttons">
+                <button id="confirmSubmitBtn" class="modal-btn confirm">Submit</button>
+                <button id="cancelSubmitBtn" class="modal-btn cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <!-- Result Modal -->
+    <div id="resultModal" class="modal">
+        <div class="modal-content">
+            <h3>Result</h3>
+            <p>Your score: <span id="finalScore">0</span>/10</p>
+            <div class="modal-buttons">
+                <button id="closeResultBtn" class="modal-btn confirm">Confirm</button>
+            </div>
+        </div>
+    </div>
+    <div class="page-header" >
+        <header class="site-header">
+            <div class="top-header-bar">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12 col-lg-6 d-none d-md-flex flex-wrap justify-content-center justify-content-lg-start mb-3 mb-lg-0">
+                            <div class="header-bar-email d-flex align-items-center">
+                                <i class="fa fa-envelope"></i><a href="#"><span class="__cf_email__" data-cfemail="277e4f5b545459064c4d5b414f4667404a464e4b0944484a">[email protected]</span></a>
+                            </div><!-- .header-bar-email -->
+                            <div class="header-bar-text lg-flex align-items-center">
+                                <p><i class="fa fa-phone"></i>001-1234-88888 </p>
+                            </div><!-- .header-bar-text -->
+                        </div><!-- .col -->
+                        <div class="col-12 col-lg-6 d-flex flex-wrap justify-content-center justify-content-lg-end align-items-center">
+                            <div class="header-bar-search">
+                                <form class="flex align-items-stretch">
+                                    <input type="search" placeholder="What would you like to learn?">
+                                    <button type="submit" value="" class="flex justify-content-center align-items-center"><i class="fa fa-search"></i></button>
+                                </form>
+                            </div><!-- .header-bar-search -->
+                            <div class="header-bar-menu">
+                                <ul class="flex justify-content-center align-items-center py-2 pt-md-0">
+                                    <li><a href="#">Register</a></li>
+                                    <li><a href="#">Login</a></li>
+                                </ul>
+                            </div><!-- .header-bar-menu -->
+                        </div><!-- .col -->
+                    </div><!-- .row -->
+                </div><!-- .container-fluid -->
+            </div><!-- .top-header-bar -->
+            <div class="nav-bar">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-9 col-lg-3">
+                            <div class="site-branding">
+                                <h1 class="site-title"><a href="index.html" rel="home">Ezu<span>ca</span></a></h1>
+                            </div><!-- .site-branding -->
+                        </div><!-- .col -->
+                        <div class="col-3 col-lg-9 flex justify-content-end align-content-center">
+                            <nav class="site-navigation flex justify-content-end align-items-center">
+                                <ul class="flex flex-column flex-lg-row justify-content-lg-end align-content-center">
+                                    <li class="current-menu-item"><a href="index.html">Home</a></li>
+                                    <li><a href="about.html">About</a></li>
+                                    <li><a href="courses.html">Courses</a></li>
+                                    <li><a href="#">Test</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+                                <div class="hamburger-menu d-lg-none">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div><!-- .hamburger-menu -->
+                                <div class="header-bar-cart">
+                                    <a href="#" class="flex justify-content-center align-items-center"><span aria-hidden="true" class="icon_bag_alt"></span></a>
+                                </div><!-- .header-bar-search -->
+                            </nav><!-- .site-navigation -->
+                        </div><!-- .col -->
+                    </div><!-- .row -->
+                </div><!-- .container -->
+            </div><!-- .nav-bar -->
+        </header><!-- .site-header -->
+        <div class="page-header-overlay">
+            <div class=".property">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <header class="entry-header">
+                                <h1>High School Proficiency Test</h1>
+                            </header><!-- .entry-header -->
+                        </div><!-- .col -->
+                    </div><!-- .row -->
+                </div><!-- .container -->
+            </div><!-- .property -->
+        </div><!-- .page-header-overlay -->
+    </div><!-- .page-header -->
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-8">
+                <h1></h1>
+                <h2></h2>
+                <p><strong>Time: 60 minutes</strong></p>
+                <p><strong>Questions: 40</strong></p>
+                <form id="quizForm" class="quiz-form">
+                    <!-- Question 1 -->
+                    <div class="question">
+                        <p><strong>Question 1 (NB):</strong> Mark the letter A, B, C, or D to indicate the word whose underlined part differs from the other three in pronunciation.</p>
+                        <p>A. nourish   B. flourish   C. courageous   D. southern</p>
+                        <label><input type="radio" name="q1" value="A"> A</label>
+                        <label><input type="radio" name="q1" value="B"> B</label>
+                        <label><input type="radio" name="q1" value="C"> C</label>
+                        <label><input type="radio" name="q1" value="D"> D</label>
+                    </div>
+                    <!-- Question 2 -->
+                    <div class="question">
+                        <p><strong>Question 2 (NB):</strong> Mark the letter A, B, C, or D to indicate the word whose underlined part differs from the other three in pronunciation.</p>
+                        <p>A. delighted   B. surprised   C. respected   D. depended</p>
+                        <label><input type="radio" name="q2" value="A"> A</label>
+                        <label><input type="radio" name="q2" value="B"> B</label>
+                        <label><input type="radio" name="q2" value="C"> C</label>
+                        <label><input type="radio" name="q2" value="D"> D</label>
+                    </div>
+                    <!-- Question 3 -->
+                    <div class="question">
+                        <p><strong>Question 3 (TH):</strong> Mark the letter A, B, C, or D to indicate the word that differs from the other three in the position of primary stress.</p>
+                        <p>A. experience   B. certificate   C. interviewer   D. consider</p>
+                        <label><input type="radio" name="q3" value="A"> A</label>
+                        <label><input type="radio" name="q3" value="B"> B</label>
+                        <label><input type="radio" name="q3" value="C"> C</label>
+                        <label><input type="radio" name="q3" value="D"> D</label>
+                    </div>
+                    <!-- Question 4 -->
+                    <div class="question">
+                        <p><strong>Question 4 (TH):</strong> Mark the letter A, B, C, or D to indicate the word that differs from the other three in the position of primary stress.</p>
+                        <p>A. library   B. entertain   C. understand   D. referee</p>
+                        <label><input type="radio" name="q4" value="A"> A</label>
+                        <label><input type="radio" name="q4" value="B"> B</label>
+                        <label><input type="radio" name="q4" value="C"> C</label>
+                        <label><input type="radio" name="q4" value="D"> D</label>
+                    </div>
+                    <!-- Question 5 -->
+                    <div class="question">
+                        <p><strong>Question 5 (NB):</strong> We can attract someone’s attention by using eye _______.</p>
+                        <p>A. contact   B. patterns   C. glasses   D. catching</p>
+                        <label><input type="radio" name="q5" value="A"> A</label>
+                        <label><input type="radio" name="q5" value="B"> B</label>
+                        <label><input type="radio" name="q5" value="C"> C</label>
+                        <label><input type="radio" name="q5" value="D"> D</label>
+                    </div>
+                    <!-- Question 6 -->
+                    <div class="question">
+                        <p><strong>Question 6 (NB):</strong> Whistling and pointing are considered ______ in most cases.</p>
+                        <p>A. impolite   B. polite   C. neutral   D. humorous</p>
+                        <label><input type="radio" name="q6" value="A"> A</label>
+                        <label><input type="radio" name="q6" value="B"> B</label>
+                        <label><input type="radio" name="q6" value="C"> C</label>
+                        <label><input type="radio" name="q6" value="D"> D</label>
+                    </div>
+                    <!-- Question 7 -->
+                    <div class="question">
+                        <p><strong>Question 7 (TH):</strong> He _______ to come to my party the following weekend.</p>
+                        <p>A. insisted   B. admitted   C. asked   D. promised</p>
+                        <label><input type="radio" name="q7" value="A"> A</label>
+                        <label><input type="radio" name="q7" value="B"> B</label>
+                        <label><input type="radio" name="q7" value="C"> C</label>
+                        <label><input type="radio" name="q7" value="D"> D</label>
+                    </div>
+                    <!-- Question 8 -->
+                    <div class="question">
+                        <p><strong>Question 8 (TH):</strong> She studies in a _______, so she doesn’t have to pay for tuition fee.</p>
+                        <p>A. private school   B. state school   C. independent school   D. public school</p>
+                        <label><input type="radio" name="q8" value="A"> A</label>
+                        <label><input type="radio" name="q8" value="B"> B</label>
+                        <label><input type="radio" name="q8" value="C"> C</label>
+                        <label><input type="radio" name="q8" value="D"> D</label>
+                    </div>
+                    <!-- Question 9 -->
+                    <div class="question">
+                        <p><strong>Question 9 (TH):</strong> The woman _______ son is a doctor passed away yesterday.</p>
+                        <p>A. whom   B. who   C. whose   D. that</p>
+                        <label><input type="radio" name="q9" value="A"> A</label>
+                        <label><input type="radio" name="q9" value="B"> B</label>
+                        <label><input type="radio" name="q9" value="C"> C</label>
+                        <label><input type="radio" name="q9" value="D"> D</label>
+                    </div>
+                    <!-- Question 10 -->
+                    <div class="question">
+                        <p><strong>Question 10 (VDC):</strong> This washing machine is in ruins, it needs _________.</p>
+                        <p>A. to repaired   B. repaired   C. be repaired   D. repairing</p>
+                        <label><input type="radio" name="q10" value="A"> A</label>
+                        <label><input type="radio" name="q10" value="B"> B</label>
+                        <label><input type="radio" name="q10" value="C"> C</label>
+                        <label><input type="radio" name="q10" value="D"> D</label>
+                    </div>
+                    <!-- Question 11 -->
+                    <div class="question">
+                        <p><strong>Question 11 (VD):</strong> These books _______ to me by my teacher three days ago.</p>
+                        <p>A. give   B. are given   C. gave   D. were given</p>
+                        <label><input type="radio" name="q11" value="A"> A</label>
+                        <label><input type="radio" name="q11" value="B"> B</label>
+                        <label><input type="radio" name="q11" value="C"> C</label>
+                        <label><input type="radio" name="q11" value="D"> D</label>
+                    </div>
+                    <!-- Question 12 -->
+                    <div class="question">
+                        <p><strong>Question 12 (VD):</strong> The man _______ next to Anna is her boyfriend.</p>
+                        <p>A. whom stands   B. stands   C. standing   D. that stand</p>
+                        <label><input type="radio" name="q12" value="A"> A</label>
+                        <label><input type="radio" name="q12" value="B"> B</label>
+                        <label><input type="radio" name="q12" value="C"> C</label>
+                        <label><input type="radio" name="q12" value="D"> D</label>
+                    </div>
+                    <!-- Question 13 -->
+                    <div class="question">
+                        <p><strong>Question 13 (NB):</strong> The United Nations Education, Scientific and Cultural Organization (UNESCO), was <u>established</u> in 1946.</p>
+                        <p>A. set up   B. found out   C. run through   D. put away</p>
+                        <label><input type="radio" name="q13" value="A"> A</label>
+                        <label><input type="radio" name="q13" value="B"> B</label>
+                        <label><input type="radio" name="q13" value="C"> C</label>
+                        <label><input type="radio" name="q13" value="D"> D</label>
+                    </div>
+                    <!-- Question 14 -->
+                    <div class="question">
+                        <p><strong>Question 14 (NB):</strong> <u>Slang</u> can be defined as a set of lexical, grammatical and phonological regularities used in informal speech.</p>
+                        <p>A. casual   B. uneducated   C. situational   D. informative</p>
+                        <label><input type="radio" name="q14" value="A"> A</label>
+                        <label><input type="radio" name="q14" value="B"> B</label>
+                        <label><input type="radio" name="q14" value="C"> C</label>
+                        <label><input type="radio" name="q14" value="D"> D</label>
+                    </div>
+                    <!-- Question 15 -->
+                    <div class="question">
+                        <p><strong>Question 15 (NB):</strong> A lot of people think that Angelina Jolie is really <u>hot</u>.</p>
+                        <p>A. beautiful   B. kind   C. unattractive   D. cool</p>
+                        <label><input type="radio" name="q15" value="A"> A</label>
+                        <label><input type="radio" name="q15" value="B"> B</label>
+                        <label><input type="radio" name="q15" value="C"> C</label>
+                        <label><input type="radio" name="q15" value="D"> D</label>
+                    </div>
+                    <!-- Question 16 -->
+                    <div class="question">
+                        <p><strong>Question 16 (NB):</strong> I’m <u>at a loss</u> to how you are going to pass your subjects without studying. All you do is play video games all day.</p>
+                        <p>A. to feel like a stranger   B. trying to understand   C. to lose the game   D. to know a lot about the area</p>
+                        <label><input type="radio" name="q16" value="A"> A</label>
+                        <label><input type="radio" name="q16" value="B"> B</label>
+                        <label><input type="radio" name="q16" value="C"> C</label>
+                        <label><input type="radio" name="q16" value="D"> D</label>
+                    </div>
+                    <!-- Question 17 -->
+                    <div class="question">
+                        <p><strong>Question 17 (NB):</strong> Lirah: “Can you give me a hand on this?”<br>Mike: “_________.”</p>
+                        <p>A. I have only two hands   B. No, my hands are busy now   C. Oh, sorry, I’m busy at the moment   D. No, I can’t, I’m not very busy</p>
+                        <label><input type="radio" name="q17" value="A"> A</label>
+                        <label><input type="radio" name="q17" value="B"> B</label>
+                        <label><input type="radio" name="q17" value="C"> C</label>
+                        <label><input type="radio" name="q17" value="D"> D</label>
+                    </div>
+                    <!-- Question 18 -->
+                    <div class="question">
+                        <p><strong>Question 18 (NB):</strong> Tom and Kate are meeting after a long time.<br>Tom: “How have you been recently?”<br>Dane: “_________.”</p>
+                        <p>A. I am going on holiday next week   B. Pretty busy, I think   C. By car, usually   D. I am working here</p>
+                        <label><input type="radio" name="q18" value="A"> A</label>
+                        <label><input type="radio" name="q18" value="B"> B</label>
+                        <label><input type="radio" name="q18" value="C"> C</label>
+                        <label><input type="radio" name="q18" value="D"> D</label>
+                    </div>
+                    <!-- Question 19 -->
+                    <div class="question">
+                        <p><strong>Question 19 (TH):</strong> When you read something in a foreign language, you frequently (19) ______ words you do not fully understand.</p>
+                        <p>A. come out   B. come across   C. come up   D. come in</p>
+                        <label><input type="radio" name="q19" value="A"> A</label>
+                        <label><input type="radio" name="q19" value="B"> B</label>
+                        <label><input type="radio" name="q19" value="C"> C</label>
+                        <label><input type="radio" name="q19" value="D"> D</label>
+                    </div>
+                    <!-- Question 20 -->
+                    <div class="question">
+                        <p><strong>Question 20 (VD):</strong> The strategy you adopt (20) ______ very much upon the degree of accuracy you require and the time at your disposal.</p>
+                        <p>A. depend   B. depending   C. depends   D. that depend</p>
+                        <label><input type="radio" name="q20" value="A"> A</label>
+                        <label><input type="radio" name="q20" value="B"> B</label>
+                        <label><input type="radio" name="q20" value="C"> C</label>
+                        <label><input type="radio" name="q20" value="D"> D</label>
+                    </div>
+                    <!-- Question 21 -->
+                    <div class="question">
+                        <p><strong>Question 21 (TH):</strong> If you are the sort of person who tends to turn to the dictionary frequently, it is (21) ______ remembering that every dictionary has its limitations.</p>
+                        <p>A. worth   B. valuable   C. vital   D. essential</p>
+                        <label><input type="radio" name="q21" value="A"> A</label>
+                        <label><input type="radio" name="q21" value="B"> B</label>
+                        <label><input type="radio" name="q21" value="C"> C</label>
+                        <label><input type="radio" name="q21" value="D"> D</label>
+                    </div>
+                    <!-- Question 22 -->
+                    <div class="question">
+                        <p><strong>Question 22 (NB):</strong> Each definition is only (22) ______ approximation and one builds up an accurate picture of the meaning of a word only after meeting it in a variety of contexts.</p>
+                        <p>A. a   B. an   C. the   D. no article</p>
+                        <label><input type="radio" name="q22" value="A"> A</label>
+                        <label><input type="radio" name="q22" value="B"> B</label>
+                        <label><input type="radio" name="q22" value="C"> C</label>
+                        <label><input type="radio" name="q22" value="D"> D</label>
+                    </div>
+                    <!-- Question 23 -->
+                    <div class="question">
+                        <p><strong>Question 23 (VD):</strong> It is also important to recognize the special dangers of dictionaries that (23) _________ from English into your native language and vice versa.</p>
+                        <p>A. translation   B. translational   C. translative   D. translate</p>
+                        <label><input type="radio" name="q23" value="A"> A</label>
+                        <label><input type="radio" name="q23" value="B"> B</label>
+                        <label><input type="radio" name="q23" value="C"> C</label>
+                        <label><input type="radio" name="q23" value="D"> D</label>
+                    </div>
+                    <!-- Question 24 -->
+                    <div class="question">
+                        <p><strong>Question 24 (NB):</strong> Reading aloud was more common in the medieval world because ________.</p>
+                        <p>A. people relied on reading for entertainment   B. silent reading had not been discovered   C. there were few places available for private reading   D. few people could read to themselves</p>
+                        <label><input type="radio" name="q24" value="A"> A</label>
+                        <label><input type="radio" name="q24" value="B"> B</label>
+                        <label><input type="radio" name="q24" value="C"> C</label>
+                        <label><input type="radio" name="q24" value="D"> D</label>
+                    </div>
+                    <!-- Question 25 -->
+                    <div class="question">
+                        <p><strong>Question 25 (TH):</strong> The word “<u>commonplace</u>” in the first paragraph mostly means ______.</p>
+                        <p>A. for everybody’s use   B. most preferable   C. attracting attention   D. widely used</p>
+                        <label><input type="radio" name="q25" value="A"> A</label>
+                        <label><input type="radio" name="q25" value="B"> B</label>
+                        <label><input type="radio" name="q25" value="C"> C</label>
+                        <label><input type="radio" name="q25" value="D"> D</label>
+                    </div>
+                    <!-- Question 26 -->
+                    <div class="question">
+                        <p><strong>Question 26 (NB):</strong> The development of silent reading during the last century indicated ________.</p>
+                        <p>A. an increase in the average age of readers   B. an increase in the number of books   C. a change in the nature of reading   D. a change in the status of literate people</p>
+                        <label><input type="radio" name="q26" value="A"> A</label>
+                        <label><input type="radio" name="q26" value="B"> B</label>
+                        <label><input type="radio" name="q26" value="C"> C</label>
+                        <label><input type="radio" name="q26" value="D"> D</label>
+                    </div>
+                    <!-- Question 27 -->
+                    <div class="question">
+                        <p><strong>Question 27 (NB):</strong> Silent reading, especially in public places, flourished mainly because of ______.</p>
+                        <p>A. the decreasing need to read aloud   B. the development of libraries   C. the increase in literacy   D. the decreasing number of listeners</p>
+                        <label><input type="radio" name="q27" value="A"> A</label>
+                        <label><input type="radio" name="q27" value="B"> B</label>
+                        <label><input type="radio" name="q27" value="C"> C</label>
+                        <label><input type="radio" name="q27" value="D"> D</label>
+                    </div>
+                    <!-- Question 28 -->
+                    <div class="question">
+                        <p><strong>Question 28 (TH):</strong> It can be inferred that the emergence of the mass media and specialised reading materials was an indication of ________.</p>
+                        <p>A. a decline of standards of literacy   B. a change in the readers’ interest   C. an alteration in educationalists’ attitudes   D. an improvement of printing techniques</p>
+                        <label><input type="radio" name="q28" value="A"> A</label>
+                        <label><input type="radio" name="q28" value="B"> B</label>
+                        <label><input type="radio" name="q28" value="C"> C</label>
+                        <label><input type="radio" name="q28" value="D"> D</label>
+                    </div>
+                    <!-- Question 29 -->
+                    <div class="question">
+                        <p><strong>Question 29 (VD):</strong> All of the following might be the factors that affected the continuation of the old shared literacy culture EXCEPT _______.</p>
+                        <p>A. the inappropriate reading skills   B. the specialised readership   C. the diversity of reading materials   D. the printed mass media</p>
+                        <label><input type="radio" name="q29" value="A"> A</label>
+                        <label><input type="radio" name="q29" value="B"> B</label>
+                        <label><input type="radio" name="q29" value="C"> C</label>
+                        <label><input type="radio" name="q29" value="D"> D</label>
+                    </div>
+                    <!-- Question 30 -->
+                    <div class="question">
+                        <p><strong>Question 30 (TH):</strong> Which of the following statements is NOT TRUE according to the passage?</p>
+                        <p>A. Reading aloud was more common in the past than it is today.   B. Not all printed mass media was appropriate for reading aloud.   C. The decline of reading aloud was wholly due to its distracting effect.   D. The change in reading habits was partly due to the social, cultural and technological changes.</p>
+                        <label><input type="radio" name="q30" value="A"> A</label>
+                        <label><input type="radio" name="q30" value="B"> B</label>
+                        <label><input type="radio" name="q30" value="C"> C</label>
+                        <label><input type="radio" name="q30" value="D"> D</label>
+                    </div>
+                    <!-- Question 31 -->
+                    <div class="question">
+                        <p><strong>Question 31 (TH):</strong> The writer of this passage is attempting to ___________.</p>
+                        <p>A. explain how reading habits have developed   B. change people’s attitudes to reading   C. show how reading methods have improved   D. encourage the growth of reading</p>
+                        <label><input type="radio" name="q31" value="A"> A</label>
+                        <label><input type="radio" name="q31" value="B"> B</label>
+                        <label><input type="radio" name="q31" value="C"> C</label>
+                        <label><input type="radio" name="q31" value="D"> D</label>
+                    </div>
+                    <!-- Question 32 -->
+                    <div class="question">
+                        <p><strong>Question 32 (TH):</strong> When I was a little girl, I dreamt of <u>to be</u> a celebrity.</p>
+                        <p>Identify the underlined part that needs correction.</p>
+                        <label><input type="radio" name="q32" value="A"> to be</label>
+                        <label><input type="radio" name="q32" value="B"> a celebrity</label>
+                        <label><input type="radio" name="q32" value="C"> dreamt</label>
+                        <label><input type="radio" name="q32" value="D"> was</label>
+                    </div>
+                    <!-- Question 33 -->
+                    <div class="question">
+                        <p><strong>Question 33 (VD):</strong> My Mom wondered where I had been five <u>day</u> ago.</p>
+                        <p>Identify the underlined part that needs correction.</p>
+                        <label><input type="radio" name="q33" value="A"> wondered</label>
+                        <label><input type="radio" name="q33" value="B"> day</label>
+                        <label><input type="radio" name="q33" value="C"> had been</label>
+                        <label><input type="radio" name="q33" value="D"> ago</label>
+                    </div>
+                    <!-- Question 34 -->
+                    <div class="question">
+                        <p><strong>Question 34 (VDC):</strong> Lana <u>asked to prepare</u> for the examination on June by her Mom.</p>
+                        <p>Identify the underlined part that needs correction.</p>
+                        <label><input type="radio" name="q34" value="A"> asked to prepare</label>
+                        <label><input type="radio" name="q34" value="B"> examination</label>
+                        <label><input type="radio" name="q34" value="C"> by her Mom</label>
+                        <label><input type="radio" name="q34" value="D"> on June</label>
+                    </div>
+                    <!-- Question 35 -->
+                    <div class="question">
+                        <p><strong>Question 35 (VD):</strong> A train leaves at 8 o’clock every morning.</p>
+                        <p>A. There was a train leaving at 8 o’clock every morning.   B. There’s a train leaving at 8 o’clock every morning.   C. There’s a train leaves at 8 o’clock every morning.   D. There’s a train to leave at 8 o’clock every morning.</p>
+                        <label><input type="radio" name="q35" value="A"> A</label>
+                        <label><input type="radio" name="q35" value="B"> B</label>
+                        <label><input type="radio" name="q35" value="C"> C</label>
+                        <label><input type="radio" name="q35" value="D"> D</label>
+                    </div>
+                    <!-- Question 36 -->
+                    <div class="question">
+                        <p><strong>Question 36 (VD):</strong> “Can I borrow your typewriter, Janet?” asked Peter.</p>
+                        <p>A. Peter asks Janet if he can borrow her typewriter.   B. Peter asked Janet if he can borrow her typewriter.   C. Peter asked Janet if he could borrow her typewriter.   D. Peter asked Janet if he can borrow your typewriter.</p>
+                        <label><input type="radio" name="q36" value="A"> A</label>
+                        <label><input type="radio" name="q36" value="B"> B</label>
+                        <label><input type="radio" name="q36" value="C"> C</label>
+                        <label><input type="radio" name="q36" value="D"> D</label>
+                    </div>
+                    <!-- Question 37 -->
+                    <div class="question">
+                        <p><strong>Question 37 (VDC):</strong> You can use it as long as you like, and it won’t wear out.</p>
+                        <p>A. No sooner how long you use it, it won’t wear out.   B. No matter how long you use it, it will wear out.   C. No matter how long you use it, it won’t wear out.   D. No sooner how long you use it, it will wear out.</p>
+                        <label><input type="radio" name="q37" value="A"> A</label>
+                        <label><input type="radio" name="q37" value="B"> B</label>
+                        <label><input type="radio" name="q37" value="C"> C</label>
+                        <label><input type="radio" name="q37" value="D"> D</label>
+                    </div>
+                    <!-- Question 38 -->
+                    <div class="question">
+                        <p><strong>Question 38 (TH):</strong> Books help broaden the mind. Books also provide a good source of entertainment.</p>
+                        <p>A. Books help broaden the mind, for they provide a good source of entertainment.   B. Books help broaden the mind, so they provide a good source of entertainment.   C. Books help broaden the mind, nor they provide a good source of entertainment.   D. Books help broaden the mind, and they provide a good source of entertainment.</p>
+                        <label><input type="radio" name="q38" value="A"> A</label>
+                        <label><input type="radio" name="q38" value="B"> B</label>
+                        <label><input type="radio" name="q38" value="C"> C</label>
+                        <label><input type="radio" name="q38" value="D"> D</label>
+                    </div>
+                    <!-- Question 39 -->
+                    <div class="question">
+                        <p><strong>Question 39 (VD):</strong> Henry tasted the pleasures of modern city life. Then he found life in his village hard and unattractive.</p>
+                        <p>A. Having tasted the pleasures of modern city life, Henry found life in his village hard and unattractive.   B. After Henry found life in his village hard and unattractive, he tasted the pleasures of modern city life.   C. Before Henry tasted the pleasures of modern city life, he found life in his village hard and unattractive.   D. Although Henry tasted the pleasures of modern city life, he found life in his village hard and unattractive.</p>
+                        <label><input type="radio" name="q39" value="A"> A</label>
+                        <label><input type="radio" name="q39" value="B"> B</label>
+                        <label><input type="radio" name="q39" value="C"> C</label>
+                        <label><input type="radio" name="q39" value="D"> D</label>
+                    </div>
+                    <!-- Question 40 -->
+                    <div class="question">
+                        <p><strong>Question 40 (VDC):</strong> “My company makes a large profit every year. Why don’t you invest more money in it?” my friend said to me.</p>
+                        <p>A. I was persuaded to invest more money in my friend’s company by him.   B. I was suggested to invest more money in my friend’s company by him.   C. I was instructed to invest more money in my friend’s company by him.   D. I was asked to invest more money in my friend’s company by him.</p>
+                        <label><input type="radio" name="q40" value="A"> A</label>
+                        <label><input type="radio" name="q40" value="B"> B</label>
+                        <label><input type="radio" name="q40" value="C"> C</label>
+                        <label><input type="radio" name="q40" value="D"> D</label>
+                    </div>
+                </form>
+            </div><!-- .col-12 col-lg-8 -->
+            <div class="col-12 col-lg-4">
+                <div class="quiz-sidebar">
+                    <div class="timer">
+                        <h3>Time remaining: <span id="timer">60:00</span></h3>
+                    </div>
+                    <div class="question-status">
+                        <h3>Question status</h3>
+                        <div class="question-grid">
+                            <!-- JavaScript will populate this -->
+                        </div>
+                    </div>
+                    <button id="sidebarSubmitBtn" class="submit-btn">Submit</button>
+                </div>
+            </div><!-- .col-12 col-lg-4 -->
+        </div><!-- .row -->
+    </div><!-- .container -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="script1.js"></script>
+    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93e1689acce5458d',t:'MTc0Njk2MzcwMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+    <script>
+            const correctAnswers = {
+            q1: 'C', q2: 'B', q3: 'C', q4: 'A', q5: 'A', q6: 'A', q7: 'D', q8: 'B', q9: 'C', q10: 'D',
+            q11: 'D', q12: 'C', q13: 'A', q14: 'A', q15: 'C', q16: 'D', q17: 'C', q18: 'B', q19: 'B', q20: 'C',
+            q21: 'A', q22: 'B', q23: 'D', q24: 'D', q25: 'D', q26: 'C', q27: 'A', q28: 'B', q29: 'A', q30: 'C',
+            q31: 'A', q32: 'A', q33: 'B', q34: 'A', q35: 'B', q36: 'C', q37: 'C', q38: 'D', q39: 'A', q40: 'D'
+        };
+    </script>
+</body>
+</html>
