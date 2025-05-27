@@ -144,6 +144,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('closeResultBtn').addEventListener('click', function() {
         closeModal('resultModal');
+        window.location.href = 'blog.html';
     });
     
     // Start timer and update status
